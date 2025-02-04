@@ -18,14 +18,14 @@ namespace Entain.Tests
         public async Task CheckHighlighteOptionForSelectedOdd()
         {
             //arraange
-            await _liveBettingPage.NavigateToLiveBettingPage();
-            await _liveBettingPage.NavigateToEventsTab();
+            await _liveBettingPage.NavigateToLiveBettingPageAsync();
+            await _liveBettingPage.NavigateToEventsTabAsync();
 
             //act
-            await _liveBettingPage.ChooseOdd();
+            await _liveBettingPage.ChooseOddAsync();
 
             //asset
-            bool isOddHighlighted = await _liveBettingPage.IsOddHighlighted();
+            bool isOddHighlighted = await _liveBettingPage.IsOddHighlightedAsync();
             Assert.IsTrue(isOddHighlighted);
         }
 
@@ -33,14 +33,14 @@ namespace Entain.Tests
         public async Task CheckBetWasAddedIntoBetslip()
         {
             //arraange
-            await _liveBettingPage.NavigateToLiveBettingPage();
-            await _liveBettingPage.NavigateToEventsTab();
+            await _liveBettingPage.NavigateToLiveBettingPageAsync();
+            await _liveBettingPage.NavigateToEventsTabAsync();
 
             //act
-            await _liveBettingPage.ChooseOdd();
+            await _liveBettingPage.ChooseOddAsync();
 
             //asset
-            bool isBetAddedIntoBetslip = await _liveBettingPage.IsOddWasAddedIntoBetsSlip();
+            bool isBetAddedIntoBetslip = await _liveBettingPage.IsOddWasAddedIntoBetsSlipAsync();
             Assert.IsTrue(isBetAddedIntoBetslip);
         }
     }

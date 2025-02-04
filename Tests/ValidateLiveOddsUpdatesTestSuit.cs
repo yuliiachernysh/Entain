@@ -16,19 +16,19 @@ namespace Entain.Tests
         public async Task CheckIfOddsUpdatedWithoutPageRefresh()
         {
             //arrenga
-            await _liveBettingPage.NavigateToLiveBettingPage();
-            await _liveBettingPage.NavigateToOvewviewTab();
-            await _liveBettingPage.NavigateToTableTennisTab();
+            await _liveBettingPage.NavigateToLiveBettingPageAsync();
+            await _liveBettingPage.NavigateToOvewviewTabAsync();
+            await _liveBettingPage.NavigateToTableTennisTabAsync();
 
             //act
-            await _liveBettingPage.ChooseOvewviewOdd();
-            (bool isOddUpdated, bool isIncreased) = await _liveBettingPage.IsOveriewOddUpdated();
+            await _liveBettingPage.ChooseOvewviewOddAsync();
+            (bool isOddUpdated, bool isIncreased) = await _liveBettingPage.IsOveriewOddUpdatedAsync();
 
             //assert
             Assert.True(isOddUpdated);
 
             //act
-            bool isOddIndicatorUpdated = await _liveBettingPage.IsOddIndicatorUpdated(isIncreased);
+            bool isOddIndicatorUpdated = await _liveBettingPage.IsOddIndicatorUpdatedAsync(isIncreased);
 
             //assert
             Assert.True(isOddIndicatorUpdated);

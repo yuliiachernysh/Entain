@@ -17,6 +17,7 @@ namespace Entain.ObjectRepositories
 
         #region Tab
         public ILocator CricketTab { get => _page.Locator("xpath=.//*[@data-testid='22']/.."); }
+        public ILocator CalendatTab { get => _page.Locator("xpath=.//a[(.)='Calendar']"); }
         #endregion
     }
 }

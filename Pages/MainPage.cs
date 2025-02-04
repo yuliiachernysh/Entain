@@ -11,7 +11,7 @@ namespace Entain.Pages
             _page = page;
         }
 
-        public async Task GoToHomePage()
+        public async Task GoToHomePageAsync()
         {
             await _page.GotoAsync("https://sports.bwin.com/en/sports");
         }

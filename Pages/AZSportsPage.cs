@@ -15,26 +15,26 @@ namespace Entain.Pages
             _aZSportsPageRepository = new AZSportsPageRepository(_page);
         }
 
-        public async Task NavigateAZsportsTab()
+        public async Task NavigateAZsportsTabAsync()
         {
             await _aZSportsPageRepository.AZsportsTab.WaitForAsync();
             await _aZSportsPageRepository.AZsportsTab.ClickAsync();
         }
 
-        public async Task ChooseSportType(string sportType)
+        public async Task ChooseSportTypeAsync(string sportType)
         {
             await _aZSportsPageRepository.SportTypePicker(sportType).WaitForAsync();
             await _aZSportsPageRepository.SportTypePicker(sportType).ClickAsync();
         }
 
-        public string GetCurrentUrl()
+        public async Task<string> GetCurrentUrl()
         {
-
+            await _aZSportsPageRepository.CalendatTab.WaitForAsync();
             string url = _page.Url;
             return url;
         }
 
-        public async Task<bool> IsCricketTabHighlighted()
+        public async Task<bool> IsCricketTabHighlightedAsync()
         {
             var attibuteResult = await _aZSportsPageRepository.CricketTab.GetAttributeAsync("class");
             bool isCricketTabSelected = attibuteResult.Contains("active");

@@ -15,30 +15,30 @@ namespace Entain.Pages
             _liveBettingPageRepository = new LiveBettingPageRepository(page);
         }
 
-        public async Task NavigateToLiveBettingPage()
+        public async Task NavigateToLiveBettingPageAsync()
         {
             await _page.GotoAsync("https://sports.bwin.com/en/sports/live/betting");
         }
 
-        public async Task NavigateToEventsTab()
+        public async Task NavigateToEventsTabAsync()
         {
             await _liveBettingPageRepository.EventViewTab.WaitForAsync();
             await _liveBettingPageRepository.EventViewTab.ClickAsync();
         }
 
-        public async Task NavigateToOvewviewTab()
+        public async Task NavigateToOvewviewTabAsync()
         {
             await _liveBettingPageRepository.OverviewTab.WaitForAsync();
             await _liveBettingPageRepository.OverviewTab.ClickAsync();
         }
 
-        public async Task NavigateToTableTennisTab()
+        public async Task NavigateToTableTennisTabAsync()
         {
-            await _liveBettingPageRepository.OverviewTableTennisGame.WaitForAsync();
+            await _liveBettingPageRepository.OverviewTableTennisGame.ScrollIntoViewIfNeededAsync(); //add it for mobile mode
             await _liveBettingPageRepository.OverviewTableTennisGame.ClickAsync();
         }
 
-        public async Task ChooseOdd()
+        public async Task ChooseOddAsync()
         {
             await _liveBettingPageRepository.AllEventTab.IsVisibleAsync();
             await _liveBettingPageRepository.AllEventTab.ClickAsync();
@@ -46,13 +46,13 @@ namespace Entain.Pages
             await _liveBettingPageRepository.FirstOddValue.ClickAsync();
         }
 
-        public async Task ChooseOvewviewOdd()
+        public async Task ChooseOvewviewOddAsync()
         {
             await _liveBettingPageRepository.FirtsOverviewOddValue.WaitForAsync();
             await _liveBettingPageRepository.FirtsOverviewOddValue.ClickAsync();
         }
 
-        public async Task<(bool isUpdated, bool isIncreased)> IsOveriewOddUpdated()
+        public async Task<(bool isUpdated, bool isIncreased)> IsOveriewOddUpdatedAsync()
         {
             string? previousOdd = await _liveBettingPageRepository.FirtsOverviewOddValue.TextContentAsync();
             bool isUpdated = false;
@@ -75,7 +75,7 @@ namespace Entain.Pages
             return (isUpdated, isIncreased);
         }
 
-        public async Task<bool> IsOddIndicatorUpdated(bool isIncreased)
+        public async Task<bool> IsOddIndicatorUpdatedAsync(bool isIncreased)
         {
             bool isOddIndicatorUpdated = false;
             var indicatorResult = await _liveBettingPageRepository.FirstOddValue.GetAttributeAsync("class");
@@ -83,18 +83,18 @@ namespace Entain.Pages
             {
                 isOddIndicatorUpdated = indicatorResult.Contains("increased");
             }
-            isOddIndicatorUpdated = indicatorResult.Contains("decreased")
+            isOddIndicatorUpdated = indicatorResult.Contains("decreased");
             return isOddIndicatorUpdated;
         }
 
-        public async Task<bool> IsOddHighlighted()
+        public async Task<bool> IsOddHighlightedAsync()
         {
             var attibuteResult = await _liveBettingPageRepository.FirstOddValue.GetAttributeAsync("class");
             bool isOddSelected = attibuteResult.Equals("option-indicator selected");
             return isOddSelected;
         }
 
-        public async Task<bool> IsOddWasAddedIntoBetsSlip()
+        public async Task<bool> IsOddWasAddedIntoBetsSlipAsync()
         {
             var isOddIsDisplayedIntoBetsSlip = await _liveBettingPageRepository.BetSlipSummary.IsVisibleAsync();
             return isOddIsDisplayedIntoBetsSlip;

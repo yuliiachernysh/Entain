@@ -19,18 +19,18 @@ namespace Entain.Tests
         public async Task CheckNavigationForSportsType()
         {
             //arrange
-            await _mainPage.GoToHomePage();
+            await _mainPage.GoToHomePageAsync();
 
             //act
-            await _page.NavigateAZsportsTab();
-            await _page.ChooseSportType("Cricket");
-            string currentUrl = _page.GetCurrentUrl();
+            await _page.NavigateAZsportsTabAsync();
+            await _page.ChooseSportTypeAsync("Cricket");
+            string currentUrl = await _page.GetCurrentUrl();
 
             //assert
-            //Assert.That(currentUrl, Is.EqualTo("https://sports.bwin.com/en/sports/cricket-22"));
+            Assert.That(currentUrl, Is.EqualTo("https://sports.bwin.com/en/sports/cricket-22"));
 
             //act
-            bool isCricketTabHighlighted = await _page.IsCricketTabHighlighted();
+            bool isCricketTabHighlighted = await _page.IsCricketTabHighlightedAsync();
 
             //assert
             Assert.IsTrue(isCricketTabHighlighted);
