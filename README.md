@@ -48,7 +48,7 @@ To run this tests locally you can use:
 dotnet test --filter "LiveBettingTestSuit"
 ```
 
-##NOTE: 
+## NOTE: 
 ```
 I want to emphasize that now some of provided tests could be flake. It's happening because UI env is not stable. As example, functionality for Betslip that was able on Saturday disappeared laterly.
 On my point of view it`s not a good practice to invest time to automate currently changable functionality.
