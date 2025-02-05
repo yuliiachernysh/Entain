@@ -51,7 +51,8 @@ dotnet test --filter "LiveBettingTestSuit"
 ## NOTE: 
 ```
 I want to emphasize that now some of provided tests could be flake. It's happening because UI env is not stable. As example, functionality for Betslip that was able on Saturday disappeared laterly.
-On my point of view it`s not a good practice to invest time to automate currently changable functionality.
+On my point of view it`s not a good practice to invest time to automate currently changable functionality. Also the most locators are hard-detected (without static id or other unique components). 
+It makes test creation a bit time-consuming. On my point of view it could be discussed and optimize on development side.
 
 Provided solution is my vision how to setup UI test solution with Playwrite framework and page-object pattern.
 ```
