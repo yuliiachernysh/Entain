@@ -4,7 +4,7 @@ Automation solution is built with Playwright and C#
 
 ## Installation
 
-To setup solution you have to install the next packages:
+The next packages were used in solution:
 
 ```bash
 Microsoft.Extensions.Configuration 8.0.0
@@ -19,7 +19,7 @@ NUnit3TestAdapter 4.5.0
 ```
 
 ```
-Also you have to install .net 8.0 locallu to run this test
+Also you have to install .net 8.0 SDK locally to run this test
 ```
 
 ## Solution composition:
